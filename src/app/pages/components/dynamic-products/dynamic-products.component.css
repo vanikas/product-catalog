@@ -1,0 +1,17 @@
+.card {
+    height: 100%;
+}
+.custom-container {
+    display: flex;
+    justify-content: flex-end;
+    .btn-custom {
+        font-size: 15px;
+        width: 10%;
+        margin-bottom: 1%;
+    }
+}
+.show-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

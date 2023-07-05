@@ -1,0 +1,9 @@
+<div class="custom-container">
+    <button class="btn-custom" [disabled]="!productsList.length" (click)="sortByPrice()">Sorting by Price</button>
+</div>
+<div class="row row-cols-4 g-3">
+    <div class="col" *ngFor="let product of productsList">
+        <app-product-card [productDetail]="product"></app-product-card>
+    </div>
+    <div class="show-message" *ngIf="!productsList.length">No Data Available</div>
+</div>
