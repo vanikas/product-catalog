@@ -1,16 +1,15 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Product } from '../../shared/model/product';
 import { EcommerceService } from '../../shared/service/ecommerce.service';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, take, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-dynamic-products',
   templateUrl: './dynamic-products.component.html',
   styleUrls: ['./dynamic-products.component.css']
 })
-export class DynamicProductsComponent implements OnInit, OnDestroy {
+export class DynamicProductsComponent implements OnInit {
 
-  private unsubscribe$: Subject<any> = new Subject<any>();
   productsList: Product[] = [];
 
   constructor(private ecommerceService: EcommerceService) { }
@@ -24,7 +23,7 @@ export class DynamicProductsComponent implements OnInit, OnDestroy {
     let selectedCategory = '';
     this.ecommerceService.getSelectedCategory()
     .pipe(
-      takeUntil(this.unsubscribe$)
+      take(1)
     )
     .subscribe(category => {
       selectedCategory = category;
@@ -54,9 +53,5 @@ export class DynamicProductsComponent implements OnInit, OnDestroy {
   sortByPrice() {
     // by price
     this.productsList = this.productsList.sort((low, high) => low.price - high.price);
-  }
-
-  ngOnDestroy() {
-    this.unsubscribe$.complete();
   }
 }
