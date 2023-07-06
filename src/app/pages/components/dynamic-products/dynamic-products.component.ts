@@ -12,7 +12,7 @@ export class DynamicProductsComponent implements OnInit {
 
   productsList: Product[] = [];
 
-  constructor(private ecommerceService: EcommerceService) { }
+  constructor(public ecommerceService: EcommerceService) { }
 
   ngOnInit(): void {
     this.getSelectedCategoryProducts();
@@ -35,6 +35,8 @@ export class DynamicProductsComponent implements OnInit {
         // to get selected category product only
         this.getSelectedProductList(selectedCategory);
       }
+    }, (error) => {
+      // show error popup
     });
   }
 

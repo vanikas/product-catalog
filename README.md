@@ -64,3 +64,7 @@ $ ng serve
 
 - We can add spinner before loading the data.
 - only basic css used to show functionlity on UI. It can be customized to look more better.
+
+
+## TEST WITH JASMINE/ KARMA
+   Best is to achieve more than 90% coverage for all the components. I have added few test cases. Mocking dependencies allows you to test a component in isolation. Positive and negative testing are both important, so be sure to include both in your angular unit tests.
