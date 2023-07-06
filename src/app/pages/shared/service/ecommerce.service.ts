@@ -16,15 +16,9 @@ export class EcommerceService {
   constructor(private http: HttpClient) { }
 
   private behaviorSubject = new BehaviorSubject<string>('electronics');
-  private subject = new Subject();
 
   setRouteData(selectedCategory: string) {
     this.behaviorSubject.next(selectedCategory);
-  }
-
-  callAllProductsList() {
-    this.subject.next(true);
-    return this.subject.asObservable();
   }
 
   getSelectedCategory() {
